@@ -1,0 +1,10 @@
+import LoginClient from './login-client';
+
+export default function LoginPage() {
+  return (
+    <div className="space-y-4">
+      <h1 className="text-xl font-semibold">Login</h1>
+      <LoginClient />
+    </div>
+  );
+}
