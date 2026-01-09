@@ -37,11 +37,7 @@ export default function LoginClient() {
 
       window.opener?.postMessage({ type: 'AUTH_SUCCESS', token }, '*');
 
-      const params = new URLSearchParams(window.location.search);
-      const returnUrl = params.get('return_url');
-      if (returnUrl) {
-        window.location.href = returnUrl;
-      }
+      window.close();
     } catch (err) {
       setError(
         err instanceof Error ? err.message : 'An error occurred during login',
