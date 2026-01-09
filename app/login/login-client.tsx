@@ -14,19 +14,16 @@ export default function LoginClient() {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        'https://zeals-test-dev.member.egw.hacomono.app/api/v2/system/auth/signin',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            mail_address: email,
-            password: password,
-          }),
+      const response = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        body: JSON.stringify({
+          mail_address: email,
+          password: password,
+        }),
+      });
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
