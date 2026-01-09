@@ -33,7 +33,8 @@ export default function LoginClient() {
       }
 
       const data = await response.json();
-      const token = data.token || data.access_token || 'demo-token-123';
+      const token =
+        data.token || data.access_token || data.data.token || 'demo-token-123';
 
       window.parent?.postMessage({ type: 'AUTH_SUCCESS', token }, '*');
     } catch (err) {
