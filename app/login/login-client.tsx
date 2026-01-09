@@ -35,9 +35,7 @@ export default function LoginClient() {
       const data = await response.json();
       const token = data.token || data.access_token || 'demo-token-123';
 
-      window.opener?.postMessage({ type: 'AUTH_SUCCESS', token }, '*');
-
-      window.close();
+      window.parent?.postMessage({ type: 'AUTH_SUCCESS', token }, '*');
     } catch (err) {
       setError(
         err instanceof Error ? err.message : 'An error occurred during login',
